@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.deb {
+    border: 1px solid black;
+}
+#background-top {
+    height: 15vh;
+    background-color: #009688;
+    z-index: -1;
+}
+#background-bottom {
+    height: 85vh;
+    background-color: #DADBD5;
+    z-index: -1;
+}
+
+.container {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 95vh;
+    background-color: #EAEAEA;
+}
+
+#bar-left {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+}
+#bar-right {
+    display: flex;
+    flex-direction: column;
+    width: 65%;
+}
+
+.name-top {
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    padding: 10px;
+}
+.name-top i {
+    font-size: 23px;
+    color: #B1B1B1;
+}
+
+.contacts {
+    height: 85px;
+    padding: 10px;
+}
+
+#search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+.search {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 97%;
+    height: 80%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.search i {
+    color: #B1B1B1;
+}
+#input-search {
+    height: 100%;
+    width: 80%;
+    border: 0;
+    background-color: #EAEAEA;
+}
+
+#contacts-container {
+    overflow-y: scroll;
+    height: calc(100% - 205px);
+}
+
+#bar-left img {
+    height: 100%;
+    border-radius: 50%;
+}
+.left-side {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.right-side {
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#notify {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #8EDAFC;
+}
+#notify i {
+    font-size: 20px;
+    color: #8EDAFC;
+}
+.back-notify {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+}
+.notify-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 10px;
+}
+.notify-text p:last-child {
+    font-size: 14px;
+    text-decoration: underline;
+    color: grey;
+}
+
+
