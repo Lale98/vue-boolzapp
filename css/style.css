@@ -4,8 +4,7 @@
     padding: 0;
 }
 
-.sent::after,
-.recived::after {
+.message::after {
     content: "";
     clear: both;
     display: table;
@@ -183,23 +182,24 @@
     padding: 15px;
 }
 
-.recived .message {
+.recived {
     float: right;
     background-color: #d5f9ba;
 }
-.sent .message{
+.sent{
     float: left;
     background-color: white;
 }
-
-.message {
+.sent,
+.recived {
     position: relative;
     border-radius: 7px;
     width: 40%;
     padding: 15px;
     margin: 10px 0;
 }
-.message p:last-child {
+.sent p:last-child,
+.recived p:last-child {
     position: absolute;
     bottom: 2%;
     right: 2%;
