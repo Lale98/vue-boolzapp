@@ -5,15 +5,16 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
         <link rel="stylesheet" href="css/style.css">
         <title>Boolzapp</title>
     </head>
     <body>
         <div id="background-top"></div>
         <div id="background-bottom"></div>
-        <div class="container">
+        <div  id="root" class="container">
             <div id="bar-left">
-                <div class="name-top deb">
+                <div class="name-top">
                     <div class="left-side">
                         <img src="img/avatar_io.jpg" alt="avatar_io">
                         <h3>Nome Utente</h3>
@@ -24,7 +25,7 @@
                         <i class="fas fa-ellipsis-v"></i>
                     </div>
                 </div>
-                <div id="notify" class="deb">
+                <div id="notify">
                     <div class="back-notify">
                         <i class="fas fa-bell-slash"></i>
                     </div>
@@ -40,16 +41,16 @@
                     </div>
                 </div>
                 <div id="contacts-container">
-                    <div class="contacts deb">
+                    <div class="contacts" v-for="(contact, index) in contacts">
                         <div class="contact-left">
-                            <img src="img/avatar_1.jpg" alt="avatar">
+                            <img :src="addImg(index)" alt="avatar">
                             <div class="text">
-                                <h3>Michele</h3>
+                                <h3> {{contacts[index].name}} </h3>
                                 <p>Lorem ipsum dolor sit.</p>
                             </div>
                         </div>
                         <div class="contact-right">
-                            <p>data e ora</p>
+                            <p>data</p>
                         </div>
                     </div>
                 </div>
@@ -96,5 +97,7 @@
                 </div>
             </div>
         </div>
+
+        <script src="js/script.js"></script>
     </body>
 </html>
