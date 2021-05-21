@@ -16,8 +16,8 @@
             <div id="bar-left">
                 <div class="name-top">
                     <div class="left-side">
-                        <img src="img/avatar_io.jpg" alt="avatar_io">
-                        <h3>Nome Utente</h3>
+                        <img src="img/avatar_4.jpg" alt="avatar_io">
+                        <h3>Ale</h3>
                     </div>
                     <div class="right-side">
                         <i class="fas fa-circle-notch"></i>
@@ -41,16 +41,16 @@
                     </div>
                 </div>
                 <div id="contacts-container">
-                    <div class="contacts" v-for="(contact, index) in contacts">
+                    <div class="contacts" :class="{active: indexActive==index}" v-for="(contact, index) in contacts" @click="indexActive = index">
                         <div class="contact-left">
                             <img :src="addImg(index)" alt="avatar">
                             <div class="text">
                                 <h3> {{contacts[index].name}} </h3>
-                                <p>Lorem ipsum dolor sit.</p>
+                                <p> {{ getLastMessage(index) }} </p>
                             </div>
                         </div>
                         <div class="contact-right">
-                            <p>data</p>
+                            <p> {{ getLastMessageData(index) }} </p>
                         </div>
                     </div>
                 </div>
@@ -58,10 +58,10 @@
             <div id="bar-right">
                 <div class="name-top deb">
                     <div class="left-side">
-                        <img src="img/avatar_1.jpg" alt="avatar_io">
+                        <img :src="addImg(indexActive)" alt="avatar">
                         <div class="text-center">
-                            <h3>Michele</h3>
-                            <p>Ultimo accesso oggi alle data</p>
+                            <h3> {{ contacts[indexActive].name }} </h3>
+                            <p>Ultimo accesso {{getLastMessageData(indexActive)}}</p>
                         </div>
                     </div>
                     <div class="right-side">
@@ -71,22 +71,10 @@
                     </div>
                 </div>
                 <div class="container-chat">
-                    <div class="message">
-                        <div class="recived">
-                            <p>Hai portato a spasso il cane?</p>
-                            <p>data</p>
-                        </div>
-                    </div>
-                    <div class="message">
-                        <div class="recived">
-                            <p>Ricordati di dargli da mangiare</p>
-                            <p>data</p>
-                        </div>
-                    </div>
-                    <div class="message">
-                        <div class="sent">
-                            <p>Tutto fatto!</p>
-                            <p>data</p>
+                    <div class="message" v-for="message in contacts[indexActive].messages">
+                        <div :class="message.status">
+                            <p> {{ message.text }} </p>
+                            <p> {{ message.date }} </p>
                         </div>
                     </div>
                 </div>

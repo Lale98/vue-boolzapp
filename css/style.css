@@ -56,10 +56,15 @@
 }
 
 .contacts {
+    position: relative;
     display: flex;
     justify-content: space-between;
     height: 85px;
     padding: 10px 15px;
+}
+.contacts:hover {
+    cursor: pointer;
+    background-color: rgba(50, 50, 50, 0.1);
 }
 
 #search-bar {
@@ -182,16 +187,16 @@
     padding: 15px;
 }
 
-.recived {
+.sent {
     float: right;
     background-color: #d5f9ba;
 }
-.sent{
+.received{
     float: left;
     background-color: white;
 }
 .sent,
-.recived {
+.received {
     position: relative;
     border-radius: 7px;
     width: 40%;
@@ -199,7 +204,7 @@
     margin: 10px 0;
 }
 .sent p:last-child,
-.recived p:last-child {
+.received p:last-child {
     position: absolute;
     bottom: 2%;
     right: 2%;
@@ -207,4 +212,10 @@
     color: rgba(0, 0, 0, 0.4);
 }
 
+.active {
+    background-color: rgba(50, 50, 50, 0.3);
+}
+.active:hover {
+    background-color: rgba(50, 50, 50, 0.3);
+}
 

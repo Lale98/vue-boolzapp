@@ -70,7 +70,7 @@ var app = new Vue({
             },
             {
                 name: 'Luisa',
-                avatar: '_4',
+                avatar: '_io',
                 visible: true,
                 messages: [
                     {
@@ -86,14 +86,22 @@ var app = new Vue({
                 ],
             }
         ],
-
+        indexActive: 0
     },
     methods: {
         addImg: function(index) {
             let item = this.contacts[index].avatar;
             return `img/avatar${item}.jpg`;
         },
-        
+        getLastMessageData: function (index) {
+            let lastMessage = this.contacts[index].messages.length-1;
+            return this.contacts[index].messages[lastMessage].date;
+        },
+        getLastMessage: function (index) {
+            let lastMessage = this.contacts[index].messages.length-1;
+            return this.contacts[index].messages[lastMessage].text.substr(0, 25) + '...';
+        }
     }
 });
 
+ 
