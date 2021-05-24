@@ -219,3 +219,7 @@
     background-color: rgba(50, 50, 50, 0.3);
 }
 
+.hidden {
+    display: none;
+}
+

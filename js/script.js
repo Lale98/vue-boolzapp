@@ -87,7 +87,8 @@ var app = new Vue({
             }
         ],
         indexActive: 0,
-        mess: ""
+        mess: "",
+        chatName: ""
     },
     methods: {
         addImg: function(index) {
@@ -109,15 +110,25 @@ var app = new Vue({
                     text: this.mess,
                     status: 'sent'});
                 this.mess = "";
+                setTimeout(() => {
+                    this.contacts[this.indexActive].messages.push({
+                        date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+                        text: "Ok",
+                        status: 'received'});
+                    }, 1000);
             };
-            setTimeout(() => {
-                this.contacts[this.indexActive].messages.push({
-                    date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
-                    text: "Ok",
-                    status: 'received'});
-                }, 1000);
-                console.log(this.contacts[this.indexActive].messages);
+        },
+        search: function() {
+            return this.contacts.map(contact => {
+                if (contact.name.toLowerCase().includes(this.chatName.toLowerCase())) {
+                    contact.visible = true;
+                }  else {
+                    contact.visible = false;
+                }
+            })
         }
     }
 });
+
+
 
