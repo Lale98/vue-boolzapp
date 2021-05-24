@@ -86,7 +86,8 @@ var app = new Vue({
                 ],
             }
         ],
-        indexActive: 0
+        indexActive: 0,
+        mess: ""
     },
     methods: {
         addImg: function(index) {
@@ -100,8 +101,23 @@ var app = new Vue({
         getLastMessage: function (index) {
             let lastMessage = this.contacts[index].messages.length-1;
             return this.contacts[index].messages[lastMessage].text.substr(0, 25) + '...';
+        },
+        sendMessage: function () {
+            if (this.mess.trim().length > 0) {
+                this.contacts[this.indexActive].messages.push({
+                    date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+                    text: this.mess,
+                    status: 'sent'});
+                this.mess = "";
+            };
+            setTimeout(() => {
+                this.contacts[this.indexActive].messages.push({
+                    date: dayjs().format('DD/MM/YYYY HH:mm:ss'),
+                    text: "Ok",
+                    status: 'received'});
+                }, 1000);
+                console.log(this.contacts[this.indexActive].messages);
         }
     }
 });
 
- 
