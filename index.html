@@ -46,7 +46,7 @@
                     </div>
                     <div id="contacts-container">
                         <div class="contacts" 
-                        :class="{active: indexActive==index, hidden: contact.visible == false}" v-for="(contact, index) in contacts" @click="indexActive = index">
+                        :class="{active: indexActive==index, hidden: contact.visible == false, hidden: detail == true}" v-for="(contact, index) in contacts" @click="indexActive = index">
                             <div class="contact-left">
                                 <img :src="addImg(index)" alt="avatar">
                                 <div class="text">
@@ -56,6 +56,14 @@
                             </div>
                             <div class="contact-right">
                                 <p> {{ getLastMessageData(index) }} </p>
+                            </div>
+                        </div>
+                        <div :class="{hidden: detail == false}">
+                            <div id="details" v-for="(message, index) in contacts[indexActive].messages" :class="{info : index == messageIndexn, hidden : index != messageIndex}" >
+                                <i class="fas fa-times" @click="detail = false"></i>
+                                <h3>INFO</h3>
+                                <P>Messaggio: {{message.text}} </P>
+                                <p>Ora del messaggio: {{message.date}} </p>
                             </div>
                         </div>
                     </div>
@@ -76,8 +84,15 @@
                         </div>
                     </div>
                     <div class="container-chat">
-                        <div class="message" v-for="message in contacts[indexActive].messages">
+                        <div class="message" v-for="(message, index) in contacts[indexActive].messages" :class="{hidden : message.delete==true}">
                             <div :class="message.status">
+                                <i class="fas fa-chevron-down" @click="info(index)"></i>
+                                <ul class="dropdown" :class="{info : message.info==true}">
+                                    <li @click="messageIndex = index, detail = true, info(index)">
+                                        Info Messaggio
+                                    </li>
+                                    <li @click="del(index), info(index)">Elimina</li>
+                                </ul>
                                 <p> {{ message.text }} </p>
                                 <p> {{ message.date }} </p>
                             </div>
