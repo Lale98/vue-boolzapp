@@ -5,85 +5,89 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;500;700&display=swap" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js" integrity="sha512-0fcCRl828lBlrSCa8QJY51mtNqTcHxabaXVLPgw/jPA5Nutujh6CbTdDgRzl9aSPYW/uuE7c4SffFUQFBAy6lg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
         <link rel="stylesheet" href="css/style.css">
         <title>Boolzapp</title>
     </head>
     <body>
-        <div id="background-top"></div>
-        <div id="background-bottom"></div>
-        <div  id="root" class="container">
-            <div id="bar-left">
-                <div class="name-top">
-                    <div class="left-side">
-                        <img src="img/avatar_4.jpg" alt="avatar_io">
-                        <h3>Ale</h3>
+        <div id="root" >
+            <div id="background-top"></div>
+            <div id="background-bottom"></div>
+            <div class="container">
+                <div id="bar-left">
+                    <div class="name-top">
+                        <div class="left-side">
+                            <img src="img/avatar_4.jpg" alt="avatar_io">
+                            <h3>Ale</h3>
+                        </div>
+                        <div class="right-side">
+                            <i class="fas fa-circle-notch"></i>
+                            <i class="fas fa-comment-alt"></i>
+                            <i class="fas fa-ellipsis-v"></i>
+                        </div>
                     </div>
-                    <div class="right-side">
-                        <i class="fas fa-circle-notch"></i>
-                        <i class="fas fa-comment-alt"></i>
-                        <i class="fas fa-ellipsis-v"></i>
+                    <div id="notify">
+                        <div class="back-notify">
+                            <i class="fas fa-bell-slash"></i>
+                        </div>
+                        <div class="notify-text">
+                            <p>Ricevi notifiche di nuovi messaggi</p>
+                            <p @click="notifyOn()">Attiva notifiche desktop</p>
+                        </div>
                     </div>
-                </div>
-                <div id="notify">
-                    <div class="back-notify">
-                        <i class="fas fa-bell-slash"></i>
+                    <div id="search-bar">
+                        <div class="search">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="input-search" @keyup="search()" placeholder="Cerca o inizia una nuova chat" v-model="chatName" value="">
+                        </div>
                     </div>
-                    <div class="notify-text">
-                        <p>Ricevi notifiche di nuovi messaggi</p>
-                        <p>Attiva notifiche desktop</p>
-                    </div>
-                </div>
-                <div id="search-bar">
-                    <div class="search">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="input-search" @keyup="search()" placeholder="Cerca o inizia una nuova chat" v-model="chatName" value="">
-                    </div>
-                </div>
-                <div id="contacts-container">
-                    <div class="contacts" 
-                    :class="{active: indexActive==index, hidden: contact.visible == false}" v-for="(contact, index) in contacts" @click="indexActive = index">
-                        <div class="contact-left">
-                            <img :src="addImg(index)" alt="avatar">
-                            <div class="text">
-                                <h3> {{contacts[index].name}} </h3>
-                                <p> {{ getLastMessage(index) }} </p>
+                    <div id="contacts-container">
+                        <div class="contacts" 
+                        :class="{active: indexActive==index, hidden: contact.visible == false}" v-for="(contact, index) in contacts" @click="indexActive = index">
+                            <div class="contact-left">
+                                <img :src="addImg(index)" alt="avatar">
+                                <div class="text">
+                                    <h3> {{contacts[index].name}} </h3>
+                                    <p> {{ getLastMessage(index) }} </p>
+                                </div>
+                            </div>
+                            <div class="contact-right">
+                                <p> {{ getLastMessageData(index) }} </p>
                             </div>
                         </div>
-                        <div class="contact-right">
-                            <p> {{ getLastMessageData(index) }} </p>
-                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="bar-right">
-                <div class="name-top deb">
-                    <div class="left-side">
-                        <img :src="addImg(indexActive)" alt="avatar">
-                        <div class="text-center">
-                            <h3> {{ contacts[indexActive].name }} </h3>
-                            <p>Ultimo accesso {{getLastMessageData(indexActive)}}</p>
+                <div id="bar-right">
+                    <div class="name-top deb">
+                        <div class="left-side">
+                            <img :src="addImg(indexActive)" alt="avatar">
+                            <div class="text-center">
+                                <h3> {{ contacts[indexActive].name }} </h3>
+                                <p>Ultimo accesso {{getLastMessageData(indexActive)}}</p>
+                            </div>
+                        </div>
+                        <div class="right-side">
+                            <i class="fas fa-search"></i>
+                            <i class="fas fa-paperclip"></i>
+                            <i class="fas fa-ellipsis-v"></i>
                         </div>
                     </div>
-                    <div class="right-side">
-                        <i class="fas fa-search"></i>
-                        <i class="fas fa-paperclip"></i>
-                        <i class="fas fa-ellipsis-v"></i>
-                    </div>
-                </div>
-                <div class="container-chat">
-                    <div class="message" v-for="message in contacts[indexActive].messages">
-                        <div :class="message.status">
-                            <p> {{ message.text }} </p>
-                            <p> {{ message.date }} </p>
+                    <div class="container-chat">
+                        <div class="message" v-for="message in contacts[indexActive].messages">
+                            <div :class="message.status">
+                                <p> {{ message.text }} </p>
+                                <p> {{ message.date }} </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div id="write-bar">
-                    <i class="far fa-smile"></i>
-                    <input type="text" id="write-message" placeholder="Scrivi un messaggio" v-model="mess" @keydown.enter="sendMessage()">
-                    <i class="fas fa-microphone"></i>
+                    <div id="write-bar">
+                        <i class="far fa-smile"></i>
+                        <input type="text" id="write-message" placeholder="Scrivi un messaggio" v-model="mess" @keydown.enter="sendMessage()">
+                        <i class="fas fa-microphone"></i>
+                    </div>
                 </div>
             </div>
         </div>

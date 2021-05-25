@@ -88,7 +88,8 @@ var app = new Vue({
         ],
         indexActive: 0,
         mess: "",
-        chatName: ""
+        chatName: "",
+        colorMode: false
     },
     methods: {
         addImg: function(index) {
@@ -126,7 +127,15 @@ var app = new Vue({
                     contact.visible = false;
                 }
             })
+        },
+        notifyOn: function() {
+            alert('Non ti scrive nessuno, a cosa ti servono le notifiche ?');
         }
+    },
+    updated: function () {
+        const messageList = document.getElementsByClassName('message');
+        const lastMessage = messageList[messageList.length - 1];
+        lastMessage.scrollIntoView();
     }
 });
 
