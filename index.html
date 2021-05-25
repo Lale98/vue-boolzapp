@@ -59,7 +59,7 @@
                             </div>
                         </div>
                         <div :class="{hidden: detail == false}">
-                            <div id="details" v-for="(message, index) in contacts[indexActive].messages" :class="{info : index == messageIndexn, hidden : index != messageIndex}" >
+                            <div id="details" v-for="(message, index) in contacts[indexActive].messages" :class="{info : index == messageIndex, hidden : index != messageIndex}" >
                                 <i class="fas fa-times" @click="detail = false"></i>
                                 <h3>INFO</h3>
                                 <P>Messaggio: {{message.text}} </P>
