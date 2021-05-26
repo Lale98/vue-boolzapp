@@ -46,7 +46,7 @@
                     </div>
                     <div id="contacts-container">
                         <div class="contacts" 
-                        :class="{active: indexActive==index, hidden: contact.visible == false, hidden: detail == true}" v-for="(contact, index) in contacts" @click="indexActive = index">
+                        :class="{active: indexActive==index, hidden: contact.visible == false, hidden1: detail == true}" v-for="(contact, index) in contacts" @click="indexActive = index">
                             <div class="contact-left">
                                 <img :src="addImg(index)" alt="avatar">
                                 <div class="text">

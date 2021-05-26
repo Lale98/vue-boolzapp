@@ -154,7 +154,7 @@ var app = new Vue({
                 }  else {
                     contact.visible = false;
                 }
-            })
+            });
         },
         notifyOn: function() {
             alert('Non ti scrive nessuno, a cosa ti servono le notifiche ?');
